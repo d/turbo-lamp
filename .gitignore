@@ -1,0 +1,5 @@
+compile_commands.json
+# my habitual build dirs
+/build*
+# CLion's default build dir
+/cmake-build-*
