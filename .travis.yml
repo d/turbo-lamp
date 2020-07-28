@@ -11,10 +11,14 @@ addons:
   homebrew:
     packages:
       - ninja
+      - clang-format
   apt:
     packages:
       - ninja-build
+      - clang-format
 
 script:
+  - hack/hack fmt
+  - git diff --exit-code
   - hack/hack gen Debug build.debug
   - hack/hack build build.debug
