@@ -24,3 +24,12 @@ endfunction()
 
 add_concepts_solution(derived_from)
 add_concepts_solution(has_memfn)
+
+function(add_if_constexpr_solution strategy)
+  set(name ${strategy}_if_constexpr)
+  add_solution(${strategy} if_constexpr)
+  target_compile_features(${name} PUBLIC cxx_std_17)
+endfunction()
+
+add_if_constexpr_solution(derived_from)
+add_if_constexpr_solution(has_memfn)
