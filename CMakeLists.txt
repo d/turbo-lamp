@@ -31,3 +31,10 @@ endfunction()
 
 add_if_constexpr_solution(derived_from)
 add_if_constexpr_solution(has_memfn)
+
+function(add_decltype_void_solution strategy)
+  add_solution(${strategy} decltype_void cxx_variable_templates)
+endfunction()
+
+add_decltype_void_solution(derived_from)
+add_decltype_void_solution(has_memfn)
