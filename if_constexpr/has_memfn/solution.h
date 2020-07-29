@@ -1,14 +1,15 @@
 namespace jesse {
-template <class T, class = void>
-struct CanOsPrint : std::false_type {};
+template <class, class = void>
+constexpr bool CanOsPrint_v = false;
+
 template <class T>
-struct CanOsPrint<T,
-                  decltype(void(std::declval<const T>().OsPrint(
-                      std::declval<std::ostream&>())))> : std::true_type {};
+constexpr bool CanOsPrint_v<T,
+                            decltype(void(std::declval<const T>().OsPrint(
+                                std::declval<std::ostream&>())))> = true;
 
 template <class T>
 std::ostream& operator<<(std::ostream& os, Vec<T>& vec) {
-  if constexpr (CanOsPrint<T>::value)
+  if constexpr (CanOsPrint_v<T>)
     for (const auto& t : vec)
       t.OsPrint(os);
   else
