@@ -43,3 +43,12 @@ endfunction()
 
 add_decltype_void_solution(derived_from)
 add_decltype_void_solution(has_memfn)
+
+function(add_cxx98_solution strategy style)
+  set(name ${strategy}_${style})
+  add_solution(${strategy} ${style})
+  set_target_properties(${name} PROPERTIES CXX_STANDARD 98)
+endfunction()
+
+add_cxx98_solution(derived_from sizeof)
+add_cxx98_solution(has_memfn sizeof)
