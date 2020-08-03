@@ -18,7 +18,11 @@ addons:
       - clang-format
 
 script:
+  - which clang-format
+  - clang-format --version
+  - cksum sizeof/has_memfn/solution.h
   - hack/hack fmt
+  - cksum sizeof/has_memfn/solution.h
   - git diff --exit-code
   - hack/hack gen Debug build.debug
   - hack/hack build build.debug
