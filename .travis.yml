@@ -18,10 +18,11 @@ addons:
       - clang-format
 
 script:
-  - which clang-format
-  - clang-format --version
+  - which clang-format-10
+  - clang-format-10 --version
   - cksum sizeof/has_memfn/solution.h
-  - hack/hack fmt
+  # beware of a clang-format 7.0 at front of PATH in Travis!
+  - env CLANG_FORMAT=clang-format-10 hack/hack fmt
   - cksum sizeof/has_memfn/solution.h
   - git diff --exit-code
   - hack/hack gen Debug build.debug
