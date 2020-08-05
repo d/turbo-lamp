@@ -18,6 +18,7 @@ addons:
       - clang-format
 
 script:
+  - echo $PATH
   - which clang-format-10
   - clang-format-10 --version
   - cksum sizeof/has_memfn/solution.h
